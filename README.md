@@ -37,7 +37,7 @@ It will run the build for release build and with optimisations for the prod vers
 ## Project structure
 ```
 
-GTC
+src/
 │
 ├── core/
 │   ├── application/
@@ -50,10 +50,9 @@ GTC
 ├── renderer/
 │   ├── renderer/
 │   ├── camera/
-│   ├── shaders/
-│   ├── materials/
 │   ├── mesh/
-│   └── culling/
+│   ├── material/
+│   └── shader/
 │
 ├── voxel/
 │   ├── block/
@@ -61,23 +60,36 @@ GTC
 │   ├── world/
 │   ├── meshing/
 │   ├── generation/
-│   ├── streaming/
-│   └── lighting/
+│   └── streaming/
+│
+├── world/
+│   ├── island/
+│   ├── biome/
+│   ├── region/
+│   ├── settlement/
+│   ├── dungeon/
+│   └── world_generation/
 │
 ├── gameplay/
 │   ├── player/
-│   ├── weapons/
-│   ├── vehicles/
-│   ├── missions/
-│   └── wanted/
+│   ├── ship/
+│   ├── combat/
+│   ├── inventory/
+│   ├── crafting/
+│   ├── trading/
+│   └── progression/
 │
 ├── ai/
 │   ├── npc/
-│   ├── traffic/
-│   ├── police/
-│   └── navigation/
+│   ├── wildlife/
+│   ├── pirates/
+│   └── navy/
 │
-├── audio/
+├── systems/
+│   ├── economy/
+│   ├── bounty/
+│   ├── weather/
+│   └── quests/
 │
 ├── resources/
 │
