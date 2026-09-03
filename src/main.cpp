@@ -1,4 +1,5 @@
 #include "core/application/application.hpp"
+
 #include <iostream>
 #include <exception> 
 
@@ -7,8 +8,8 @@ auto main() -> int {
 
   try {
     Core::Application application(
-      1600,
-      900,
+      800,
+      600,
       "GTC"
     );
 

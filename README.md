@@ -1,6 +1,6 @@
 # GTC (Place holder name!)
 
-A voxel style game with open world and game mechanics of GTA San Andreas.
+A 2d pirate, RPG, wold exploration game.
 
 
 <br>
@@ -37,6 +37,94 @@ It will run the build for release build and with optimisations for the prod vers
 ## Project structure
 ```
 
+
+# for now 
+GTC/
+├── CMakeLists.txt
+├── CMakePresets.json
+├── README.md
+├── LICENSE
+│
+├── cmake/
+│   └── windows-mingw.cmake
+│
+├── assets/
+│   ├── textures/
+│   │   ├── player/
+│   │   │   └── player.png
+│   │   ├── world/
+│   │   ├── environment/
+│   │   └── ui/
+│   │
+│   ├── audio/
+│   │   ├── music/
+│   │   └── sounds/
+│   │
+│   ├── fonts/
+│   └── data/
+│
+├── src/
+│   ├── main.cpp
+│   │
+│   ├── core/
+│   │   ├── application/
+│   │   │   ├── application.cpp
+│   │   │   └── application.hpp
+│   │   │
+│   │   ├── window/
+│   │   │   ├── main_window.cpp
+│   │   │   └── main_window.hpp
+│   │   │
+│   │   ├── time/
+│   │   │   ├── time.cpp
+│   │   │   └── time.hpp
+│   │   │
+│   │   └── input/
+│   │       ├── input_manager.cpp
+│   │       └── input_manager.hpp
+│   │
+│   ├── game/
+│   │   ├── game.cpp
+│   │   ├── game.hpp
+│   │   │
+│   │   ├── player/
+│   │   │   ├── player.cpp
+│   │   │   └── player.hpp
+│   │   │
+│   │   └── world/
+│   │       ├── world.cpp
+│   │       └── world.hpp
+│   │
+│   ├── scenes/
+│   │   ├── scene.hpp
+│   │   └── test_scene/
+│   │       ├── test_scene.cpp
+│   │       └── test_scene.hpp
+│   │
+│   ├── rendering/
+│   │   ├── renderer.cpp
+│   │   ├── renderer.hpp
+│   │   └── camera/
+│   │       ├── camera.cpp
+│   │       └── camera.hpp
+│   │
+│   ├── resources/
+│   │   ├── texture_manager.cpp
+│   │   └── texture_manager.hpp
+│   │
+│   └── audio/
+│       ├── audio_manager.cpp
+│       └── audio_manager.hpp
+│
+├── tests/
+│
+├── tools/
+│
+└── build/
+
+
+
+# test structure
 src/
 │
 ├── core/
@@ -54,13 +142,6 @@ src/
 │   ├── material/
 │   └── shader/
 │
-├── voxel/
-│   ├── block/
-│   ├── chunk/
-│   ├── world/
-│   ├── meshing/
-│   ├── generation/
-│   └── streaming/
 │
 ├── world/
 │   ├── island/

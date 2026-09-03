@@ -1,5 +1,5 @@
 #include "application.hpp"
-#include "core/window/window.hpp"
+#include "../../core/window/window.hpp"
 #include <algorithm>
 #include <cstdint>
 #include <raylib.h>
@@ -15,38 +15,35 @@ Application::Application(
 
 int Application::run() 
 {
+  time_.reset();
+  if (!test_world_.load())
+  {
+    return -1;
+  }
+
   while (running_ && !main_window_.should_close())
   {
-    // -------------------------------------------
     // timing
-    // -------------------------------------------
     time_.update();
-
 
     const float delta = time_.delta_seconds();
 
-
-    // -------------------------------------------
     // input
-    // -------------------------------------------
     proces_input();
 
 
-    // -------------------------------------------
     // fixed timestep physics
-    // -------------------------------------------
     physics_accumulator_ += delta;
 
-    int fixed_steps = 0;
 
+
+    int fixed_steps = 0;
     while (physics_accumulator_ >= FIXED_DELTA && fixed_steps < MAX_FIXED_STEPS)
     {
       simulate(FIXED_DELTA);
       physics_accumulator_ -= FIXED_DELTA;
       ++fixed_steps;
     }
-
-  
 
 
     // If the game was stalled for too long, throw away the excessive 
@@ -58,26 +55,22 @@ int Application::run()
     }
 
 
-    // -------------------------------------------
     // variable-rate gameplay update 
-    // -------------------------------------------
     update(delta);
 
 
-    // -------------------------------------------
     // rendering
-    // --------------------------------------------
-
     const float interpolation = std::clamp(
       physics_accumulator_ / FIXED_DELTA,
       0.0F,
       1.0F
     );
+    
+    test_world_.update(delta);
 
     main_window_.begin_frame();
-
-    render(interpolation);
-
+      render(interpolation);
+      test_world_.draw();
     main_window_.end_frame();
   }
 
@@ -93,6 +86,10 @@ void Application::proces_input()
   // Example: 
   // if (IsKeyPressed(KEY_ESCAPE)) 
   // {  running_ = false; }
+  if (IsKeyPressed(KEY_ESCAPE))
+  {
+    running_ = false;
+  }
 }
 
 void Application::simulate( const float fixed_delta ) 
@@ -131,23 +128,12 @@ void Application::render(const float interpolation)
 {
   static_cast<void>(interpolation);
 
-  ClearBackground(RAYWHITE);
+  // ClearBackground(RAYWHITE);
+  ClearBackground(BLACK);
 
-  DrawText(
-    "GTC",
-    40, 
-    40,
-    32,
-    BLACK
-  );
+  DrawText( "GTC", 40, 40, 32, BLACK);
 
-  DrawText(
-    "Application running",
-    40,
-    90,
-    20,
-    DARKGRAY
-  );
+  DrawText( "Application running", 40, 90, 20, DARKGRAY);
 
 }
 

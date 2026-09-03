@@ -2,6 +2,8 @@
 
 #include "../time/time.hpp"
 #include "../window/window.hpp"
+#include "../../world/test/test_world.hpp"
+#include "../../gameplay/player/player.hpp"
 
 #include <cstdint>
 
@@ -36,6 +38,7 @@ private:
   static constexpr int MAX_FIXED_STEPS = 8;
   MainWindow main_window_;
   Time time_;
+  World::TestWorld test_world_;
 
   bool running_ = true; 
 
